@@ -16,7 +16,6 @@ todo_planner_system_prompt = """
 1. 分析研究主题，识别关键维度和子问题
 2. 设计 3-5 个互补且不重复的调研任务
 3. 为每个任务制定明确的检索策略
-4. 使用笔记工具记录和同步任务状态
 </核心职责>
 
 <任务设计原则>
@@ -25,12 +24,6 @@ todo_planner_system_prompt = """
 - 可执行性：每个任务都有明确的检索方向
 - 深度性：兼顾基础背景和前沿动态
 </任务设计原则>
-
-<笔记工具使用>
-使用 `note` 工具记录任务，参数为 JSON 格式：
-- 创建笔记：`[TOOL_CALL:note:{"action":"create","task_id":1,"title":"任务标题","note_type":"task_state","tags":["deep_research","task_1"],"content":"任务内容"}]`
-- 更新笔记：`[TOOL_CALL:note:{"action":"update","note_id":"<ID>","task_id":1,"title":"任务标题","note_type":"task_state","tags":["deep_research","task_1"],"content":"更新内容"}]`
-</笔记工具使用>
 """
 
 
@@ -64,7 +57,7 @@ todo_planner_instructions = """
 # ============================================================
 # 任务执行专家 - 内容总结
 # ============================================================
-task_summarizer_instructions = """
+task_summarizer_system_prompt = """
 你是一名研究执行专家，负责对检索到的信息进行深度分析和结构化总结。
 
 <核心要求>
@@ -74,18 +67,12 @@ task_summarizer_instructions = """
 4. 保持客观中立，区分事实与观点
 </核心要求>
 
-<笔记协作>
-- 使用 `[TOOL_CALL:note:{"action":"read","note_id":"<note_id>"}]` 读取已有笔记
-- 使用 `[TOOL_CALL:note:{"action":"update","note_id":"<note_id>",...}]` 更新笔记内容
-</笔记协作>
-
 <输出规范>
 - 直接输出 Markdown 格式的总结内容
 - 以"任务总结"作为标题
 - 使用有序或无序列表呈现关键发现
 - 禁止输出"我将..."、"根据..."等废话
 - 若无有效信息，输出"暂无可用信息"
-- 最终输出不得包含 `[TOOL_CALL:...]` 指令
 </输出规范>
 """
 
@@ -118,7 +105,7 @@ report_writer_instructions = """
 
 5. **参考来源**
    - 列出研究过程中实际引用的外部来源（网页、论文、报告等）
-   - 格式：来源标题 + URL 链接
+   - 格式：`[来源标题](URL)` Markdown 链接
    - **注意**：只列出搜索结果中的实际外部来源，不要引用"任务总结"或内部笔记
 </报告结构>
 
@@ -127,13 +114,7 @@ report_writer_instructions = """
 - 语言专业、逻辑清晰
 - 参考来源必须来自搜索结果中的实际网页/文献，不要引用任务总结本身
 - 信息缺失时注明"暂无相关信息"
-- 禁止在输出中包含 `[TOOL_CALL:...]` 指令
 </写作要求>
-
-<笔记协作>
-- 报告生成前，使用 `[TOOL_CALL:note:{"action":"read","note_id":"<note_id>"}]` 读取各任务笔记
-- 可创建报告级别的总结笔记：`[TOOL_CALL:note:{"action":"create","title":"研究报告","note_type":"conclusion","tags":["deep_research","report"],"content":"..."}]`
-</笔记协作>
 """
 
 
@@ -178,13 +159,7 @@ script_writer_instructions = """
 </脚本要求>
 
 <输出格式>
-直接输出 JSON 数组，不要包含 Markdown 代码块标记：
-[
-  {"role": "Host", "content": "大家好，欢迎收听 DeepCast！今天我们要聊一个特别有意思的话题..."},
-  {"role": "Guest", "content": "是的，这个话题最近确实很火，我来给大家深入分析一下..."},
-  ...
-]
-
-对话轮次控制在 8-12 轮，确保内容充实且不拖沓。
+输出 JSON 数组，每个元素包含 role（"Host" 或 "Guest"）和 content 字段。
+对话轮次控制在 6-15 轮，确保内容充实且不拖沓。
 </输出格式>
 """

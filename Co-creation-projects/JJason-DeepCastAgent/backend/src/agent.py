@@ -17,7 +17,7 @@ from config import Configuration
 from models import SummaryState, SummaryStateOutput, TodoItem
 from prompts import (
     report_writer_instructions,
-    task_summarizer_instructions,
+    task_summarizer_system_prompt,
     todo_planner_system_prompt,
 )
 from services.audio_generator import AudioGenerationService
@@ -73,7 +73,7 @@ class DeepResearchAgent:
 
         self._summarizer_factory: Callable[[], ToolAwareSimpleAgent] = lambda: self._create_tool_aware_agent(  # noqa: E501
             name="任务总结专家",
-            system_prompt=task_summarizer_instructions.strip(),
+            system_prompt=task_summarizer_system_prompt.strip(),
             llm=self.fast_llm,
         )
 
