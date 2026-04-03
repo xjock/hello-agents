@@ -1128,7 +1128,7 @@ Let's quickly experience the basic functions of the RAG system:
 
 ```python
 from hello_agents import SimpleAgent, HelloAgentsLLM, ToolRegistry
-from hello_agents.tools import RAGTool
+from hello_agents.tools.builtin.rag_tool import RAGTool
 
 # Create Agent with RAG capability
 llm = HelloAgentsLLM()

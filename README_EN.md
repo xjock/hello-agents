@@ -30,7 +30,9 @@
 ## 📚 Quick Start
 
 ### Online Reading
-**[🌐 International Access](https://datawhalechina.github.io/hello-agents/)** | **[🚀 Domestic Acceleration](https://hello-agents.datawhale.cc)** - No download required, learn anytime, anywhere
+**[🌐 Click here to start reading online](https://datawhalechina.github.io/hello-agents/)** - No download required, learn anytime, anywhere
+
+**[📖 Cookbook](https://book.heterocat.com.cn/)**
 
 ### Local Reading
 If you wish to read locally or contribute content, please refer to the learning guide below.
@@ -160,7 +162,7 @@ We are an open-source community and welcome any form of contribution!
 ## Star History
 
 <div align='center'>
-    <img src="./docs/images/star-history-2026324.png" alt="Datawhale" width="90%">
+    <img src="./docs/images/star-history-2026210.png" alt="Datawhale" width="90%">
 </div>
 
 <div align="center">

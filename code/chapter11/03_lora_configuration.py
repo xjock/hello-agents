@@ -5,7 +5,6 @@
 
 import sys
 from pathlib import Path
-import json
 
 # 添加项目路径
 project_root = Path(__file__).parent.parent / "HelloAgents"
@@ -29,7 +28,7 @@ def basic_lora_config():
     - 模型文件只有~10MB
     """
     tool = RLTrainingTool()
-    
+
     # 使用RLTrainingTool进行SFT训练,启用LoRA
     config = {
         "action": "train",
@@ -38,10 +37,10 @@ def basic_lora_config():
         "output_dir": "./output/lora_basic",
         "max_samples": 100,
         "num_epochs": 1,
-        
+
         # LoRA配置
-        "use_lora": True,           # 启用LoRA
-        "lora_r": 16,               # LoRA秩(rank)
+        "use_lora": True,  # 启用LoRA
+        "lora_r": 16,  # LoRA秩(rank)
         "lora_alpha": 32,           # 缩放因子(通常是r的2倍)
     }
     

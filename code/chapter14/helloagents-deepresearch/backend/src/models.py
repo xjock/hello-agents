@@ -3,7 +3,6 @@
 import operator
 from dataclasses import dataclass, field
 from typing import List, Optional
-
 from typing_extensions import Annotated
 
 

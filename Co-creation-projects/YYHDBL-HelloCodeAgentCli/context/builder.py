@@ -13,12 +13,13 @@ from datetime import datetime
 import tiktoken
 import math
 
-from core.message import Message
-from core.llm import HelloAgentsLLM
+from hello_agents.core.message import Message
+from hello_agents.core.llm import HelloAgentsLLM
 
 if TYPE_CHECKING:
     # Optional, only for type checking. Importing tools at runtime may pull in heavy optional deps.
-    from tools import MemoryTool, RAGTool
+    from hello_agents.tools.builtin.rag_tool import  RAGTool
+    from hello_agents.tools.builtin.memory_tool import  MemoryTool
 else:
     MemoryTool = TypingAny  # type: ignore[assignment,misc]
     RAGTool = TypingAny  # type: ignore[assignment,misc]

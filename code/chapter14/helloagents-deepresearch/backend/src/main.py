@@ -5,13 +5,11 @@ from __future__ import annotations
 import json
 import sys
 from typing import Any, Dict, Iterator, Optional
-
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
 from loguru import logger
 from pydantic import BaseModel, Field
-
 from config import Configuration, SearchAPI
 from agent import DeepResearchAgent
 

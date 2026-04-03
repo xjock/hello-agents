@@ -15,9 +15,11 @@ from datetime import datetime
 import json
 
 from hello_agents import HelloAgentsLLM
-from hello_agents.agents import FunctionCallAgent
+from hello_agents.agents.function_call_agent import FunctionCallAgent
 from hello_agents.context import ContextBuilder, ContextConfig, ContextPacket
-from hello_agents.tools import MemoryTool, NoteTool, TerminalTool
+from hello_agents.tools.builtin.memory_tool import MemoryTool
+from hello_agents.tools.builtin.note_tool import NoteTool
+from hello_agents.tools.builtin.terminal_tool import TerminalTool
 from hello_agents.tools.registry import ToolRegistry
 from hello_agents.core.message import Message
 
@@ -35,10 +37,10 @@ class CodebaseMaintainer:
     """
 
     def __init__(
-        self,
-        project_name: str,
-        codebase_path: str,
-        llm: Optional[HelloAgentsLLM] = None
+            self,
+            project_name: str,
+            codebase_path: str,
+            llm: Optional[HelloAgentsLLM] = None
     ):
         self.project_name = project_name
         self.codebase_path = codebase_path
@@ -114,9 +116,9 @@ class CodebaseMaintainer:
         Returns:
             str: 助手的回答
         """
-        print(f"\n{'='*80}")
+        print(f"\n{'=' * 80}")
         print(f"👤 用户: {user_input}")
-        print(f"{'='*80}\n")
+        print(f"{'=' * 80}\n")
 
         # 第一步: 检索相关笔记（为 agent 提供上下文）
         relevant_notes = self._retrieve_relevant_notes(user_input)
@@ -132,10 +134,10 @@ class CodebaseMaintainer:
 
         # 第三步: 让 Agent 自主决策和使用工具
         print("🤖 Agent 正在思考并决定使用哪些工具...\n")
-        
+
         # 更新 agent 的系统提示（包含上下文）
         self.agent.system_prompt = context
-        
+
         # 调用 agent（agent 会自主决定是否使用工具）
         response = self.agent.run(user_input)
 
@@ -146,7 +148,7 @@ class CodebaseMaintainer:
         self._update_history(user_input, response)
 
         print(f"\n🤖 助手: {response}\n")
-        print(f"{'='*80}\n")
+        print(f"{'=' * 80}\n")
 
         return response
 
@@ -331,7 +333,6 @@ class CodebaseMaintainer:
 
         return base_instructions + "\n" + mode_hints.get(mode, mode_hints["auto"])
 
-
     def _update_history(self, user_input: str, response: str):
         """更新对话历史"""
         self.conversation_history.append(
@@ -376,11 +377,11 @@ class CodebaseMaintainer:
         return result
 
     def create_note(
-        self,
-        title: str,
-        content: str,
-        note_type: str = "general",
-        tags: List[str] = None
+            self,
+            title: str,
+            content: str,
+            note_type: str = "general",
+            tags: List[str] = None
     ) -> str:
         """创建笔记"""
         result = self.note_tool.run({

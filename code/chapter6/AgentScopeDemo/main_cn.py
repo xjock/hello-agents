@@ -3,16 +3,19 @@
 三国狼人杀 - 基于AgentScope的中文版狼人杀游戏
 融合三国演义角色和传统狼人杀玩法
 """
+from dotenv import load_dotenv
+# 加载 .env 文件中的环境变量
+load_dotenv('.env')
+
+
 import asyncio
 import os
 import random
-from typing import List, Dict, Optional
-
+from typing import List, Dict
 from agentscope.agent import ReActAgent
 from agentscope.model import DashScopeChatModel
 from agentscope.pipeline import MsgHub, sequential_pipeline, fanout_pipeline
 from agentscope.formatter import DashScopeMultiAgentFormatter
-
 from prompt_cn import ChinesePrompts
 from game_roles import GameRoles
 from structured_output_cn import (

@@ -1,6 +1,6 @@
 # services/learning_knowledge_service.py
 
-from hello_agents.tools import MemoryTool, RAGTool
+from hello_agents.tools.builtin.rag_tool import MemoryTool, RAGTool
 from datetime import datetime
 from typing import Optional
 

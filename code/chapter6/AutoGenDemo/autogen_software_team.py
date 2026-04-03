@@ -4,25 +4,24 @@ AutoGen 软件开发团队协作案例
 
 import os
 import asyncio
-from typing import List, Dict, Any
 from dotenv import load_dotenv
 
-# 加载环境变量
-load_dotenv()
-
 # 先测试一个版本，使用 OpenAI 客户端
-from autogen_ext.models.openai import OpenAIChatCompletionClient
 from autogen_agentchat.agents import AssistantAgent, UserProxyAgent
 from autogen_agentchat.teams import RoundRobinGroupChat
 from autogen_agentchat.conditions import TextMentionTermination
 from autogen_agentchat.ui import Console
+from openai import OpenAI
+
+# 加载环境变量
+load_dotenv('./env')
 
 def create_openai_model_client():
     """创建 OpenAI 模型客户端用于测试"""
-    return OpenAIChatCompletionClient(
-        model=os.getenv("LLM_MODEL_ID", "gpt-4o"),
+    return OpenAI(
+        model=os.getenv("LLM_MODEL_ID"),
         api_key=os.getenv("LLM_API_KEY"),
-        base_url=os.getenv("LLM_BASE_URL", "https://api.openai.com/v1")
+        base_url=os.getenv("LLM_BASE_URL")
     )
 
 def create_product_manager(model_client):

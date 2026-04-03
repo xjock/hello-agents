@@ -1,6 +1,6 @@
 from hello_agents import SimpleAgent, HelloAgentsLLM
 from programmer.services.problem_repository import ProblemRepository
-from hello_agents.tools import RAGTool
+from hello_agents.tools.builtin.rag_tool import RAGTool
 import re
 
 

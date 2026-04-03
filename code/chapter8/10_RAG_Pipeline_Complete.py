@@ -5,12 +5,9 @@
 展示从文档处理到智能问答的完整RAG流程
 """
 
-import os
 import time
-import json
 from datetime import datetime
-from typing import List, Dict, Any, Optional
-from hello_agents.tools import RAGTool
+from hello_agents.tools.builtin.rag_tool import RAGTool
 from dotenv import load_dotenv
 load_dotenv()
 

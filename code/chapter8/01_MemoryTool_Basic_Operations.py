@@ -7,8 +7,6 @@
 
 from dotenv import load_dotenv
 load_dotenv()
-from datetime import datetime
-from typing import List
 from hello_agents.tools import MemoryTool
 
 def memory_tool_execute_demo():

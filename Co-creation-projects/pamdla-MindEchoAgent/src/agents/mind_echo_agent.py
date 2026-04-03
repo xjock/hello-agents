@@ -1,8 +1,9 @@
 # src/agents/mind_echo_agent.py
 
 from hello_agents import SimpleAgent, HelloAgentsLLM, ToolRegistry
-from hello_agents.tools import MemoryTool, A2ATool
-from src.tools.dialogue_state_tool import DialogueStateTool
+from hello_agents.tools.builtin.memory_tool import  MemoryTool
+from hello_agents.tools.builtin.protocol_tools import A2ATool
+from hello_agents.tools.builtin.dialogue_state_tool import DialogueStateTool
 from src.tools.mood_music_tool import MoodMusicTool
 from src.tools.text_comfort_tool import TextComfortTool
 from src.tools.mood_summary_tool import MoodSummaryTool

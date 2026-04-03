@@ -23,21 +23,6 @@ _"上下文工程是...在上下文窗口中为下一步填充恰到好处信息
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## [上下文工程的概念](https://blog.langchain.com/context-engineering-for-agents/`)
 
 ![alt text](./images/Extra02-figures/image-2.png)

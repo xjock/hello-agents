@@ -6,8 +6,6 @@
 
 import sys
 from pathlib import Path
-import json
-
 # 添加项目路径
 project_root = Path(__file__).parent.parent / "HelloAgents"
 sys.path.insert(0, str(project_root))
