@@ -1,0 +1,50 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.2765,
+          33.5138
+        ]
+      },
+      "properties": {
+        "row_index": 1,
+        "Column_0": "大马士革集结区",
+        "Column_3": "主要物资中转站，目前安全"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.1342,
+          36.2021
+        ]
+      },
+      "properties": {
+        "row_index": 2,
+        "Column_0": "阿勒颇临时医疗点",
+        "Column_3": "急需外科手术设备"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.7233,
+          34.7355
+        ]
+      },
+      "properties": {
+        "row_index": 3,
+        "Column_0": "霍姆斯检查站",
+        "Column_3": "交通拥堵，有人员滞留"
+      }
+    }
+  ]
+}

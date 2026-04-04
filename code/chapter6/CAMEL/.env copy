@@ -1,0 +1,4 @@
+LLM_MODEL_ID="kimi-for-coding"
+LLM_API_KEY="sk-kimi-lQReDF2LwYaN7gkCXbjW1h2Rl9JQDaCA8OPXw31JTIpMosECb0Axmag1Em7GPQI6"
+LLM_BASE_URL="https://api.kimi.com/coding/v1"
+LLM_TIMEOUT=60
